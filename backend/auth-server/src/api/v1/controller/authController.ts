@@ -77,8 +77,70 @@ async function viewAdmin(req: Request, res: Response): Promise<void> {
   res.status(response.statusCode).json(response)
 }
 
+async function addStudent(req: Request, res: Response): Promise<void> {
+  const response = {
+    isSuccess: false,
+    statusCode: 200,
+    message: 'Student not added',
+    developerMessage: '',
+    isReadOnly: false,
+    data: {},
+  }
+
+  const student = await authService.addStudent(
+    req.body.name,
+    req.body.gender,
+    req.body.year
+  )
+
+  if (student) {
+    response.statusCode = 200
+    response.isSuccess = true
+    response.message = 'Student added succesfully'
+    response.data = student
+  } else {
+    logGeneralError(
+      'admin-serive',
+      '/controller/authController.ts',
+      'addStudent',
+      'Something wrong happen'
+    )
+  }
+  res.status(response.statusCode).json(response)
+}
+
+async function viewStudents(req: Request, res: Response): Promise<void> {
+  const response = {
+    isSuccess: false,
+    statusCode: 200,
+    message: 'Students not viwed',
+    developerMessage: '',
+    isReadOnly: false,
+    data: {},
+  }
+
+  const students = await authService.viewStudents()
+
+  if (students) {
+    response.statusCode = 200
+    response.isSuccess = true
+    response.message = 'Admin viewed succesfully'
+    response.data = students
+  } else {
+    logGeneralError(
+      'admin-serive',
+      '/controller/authController.ts',
+      'viewStudents',
+      'Something wrong happen'
+    )
+  }
+  res.status(response.statusCode).json(response)
+}
+
 export default {
   test,
   addAdmin,
-  viewAdmin
+  viewAdmin,
+  addStudent,
+  viewStudents
 }
