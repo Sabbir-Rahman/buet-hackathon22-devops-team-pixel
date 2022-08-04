@@ -20,8 +20,7 @@
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 12,
-    "sourceType": "module",
-    "project": "./auth-server/tsconfig.json"
+    "sourceType": "module"
   },
   "plugins": ["@typescript-eslint", "prettier"],
   "rules": {
@@ -47,4 +46,3 @@
     ]
   }
 }
-
