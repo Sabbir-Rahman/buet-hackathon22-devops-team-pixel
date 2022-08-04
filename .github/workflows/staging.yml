@@ -17,5 +17,4 @@ jobs:
     - run: |
         cd backend/admin-server
         sudo docker ps
-        1998 -S
         pwd
