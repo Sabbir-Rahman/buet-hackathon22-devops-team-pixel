@@ -4,7 +4,8 @@ import LogIn from './auth/UserLogIn';
 import AdminLogIn from './auth/adminLogIn';
 import StudentSignUp from './auth/UserSignUp';
 import AdminSignUp from './auth/adminSignup';
-//import Addcourse from './admin/admindash';
+import Addcourse from './admin/admindash';
+import ViewCourse from './admin/adminViewCourse';
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App() {
   return (
@@ -29,11 +30,16 @@ function App() {
           <AdminSignUp />
         </Route>
       </Switch>
-      {/* <Switch>
+      <Switch>
         <Route exact path="/admindash">
           <Addcourse />
         </Route>
-      </Switch> */}
+      </Switch>
+      <Switch>
+        <Route exact path="/adminviewCourse">
+          <ViewCourse />
+        </Route>
+      </Switch>
     </Router>
   );
 }

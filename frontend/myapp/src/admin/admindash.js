@@ -1,18 +1,18 @@
 import React from 'react';
 import axios from 'axios';
-import Select from 'react-select'
+//import Select from 'react-select'
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import jwt from "jsonwebtoken";
+//import jwt from "jsonwebtoken";
 
 const Addcourse = () => {
-    const [coursename, setCourseName] = useState("");
+    const [name, setname] = useState("");
     const [code, setcode] = useState("");
     const [credit, setCredit] = useState(1);
     const [initialState2, setInitialState2] = useState([]);
     const usertoken = localStorage.getItem("admintoken");
     console.log(usertoken);
-    const decodeduser = jwt.decode(usertoken);
+    const decodeduser = 'jwt cholle eikhane jwt thakbe';
     console.log(decodeduser);
 
     
@@ -20,10 +20,7 @@ const Addcourse = () => {
         if (decodeduser != null) {
             const adminID = decodeduser.id; // SUBJECT TO CHANGE
             const newCourse = {
-                adminID,
-                coursename,
-                code,
-                credit
+                name
             }
             console.log(newCourse);
             
@@ -39,10 +36,10 @@ const Addcourse = () => {
 
 
                 
-                    const response = await axios.post('/reserve/', newCourse); // SUBJECT TO CHANGE 
+                    const response = await axios.post('http://localhost:5010/api/v1/admin/course/add', newCourse); // SUBJECT TO CHANGE 
                     console.log(response);
                     if ((response.status = 200)) {
-                        alert("your reservation has been made");
+                        alert("your course is added");
                     }
 
                 //this is working but in line 57 
@@ -59,7 +56,7 @@ const Addcourse = () => {
         <div>
             <label>
                 Course Name
-                <input type="text" onChange={e => setCourseName(e.target.value)} />
+                <input type="text" onChange={e => setname(e.target.value)} />
             </label>
             <label>
                 Course Code
