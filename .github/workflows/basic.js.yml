@@ -20,5 +20,4 @@ jobs:
         pwd
         npm i
         npm run build
-        npm run test
         sudo service nginx restart
