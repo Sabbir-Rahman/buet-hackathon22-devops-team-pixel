@@ -7,7 +7,7 @@ import { useParams } from 'react-router-dom';
 
 const Addcourse = () => {
     const [name, setname] = useState("");
-    const [code, setcode] = useState("");
+    const [description, setDescription] = useState("");
     const [credit, setCredit] = useState(1);
     const [initialState2, setInitialState2] = useState([]);
     const usertoken = localStorage.getItem("admintoken");
@@ -20,7 +20,8 @@ const Addcourse = () => {
         if (decodeduser != null) {
             const adminID = decodeduser.id; // SUBJECT TO CHANGE
             const newCourse = {
-                name
+                name,
+                description
             }
             console.log(newCourse);
             
@@ -36,7 +37,7 @@ const Addcourse = () => {
 
 
                 
-                    const response = await axios.post('http://localhost:5010/api/v1/admin/course/add', newCourse); // SUBJECT TO CHANGE 
+                    const response = await axios.post('http://68.183.191.149:5010/api/v1/admin/course/add', newCourse); // SUBJECT TO CHANGE 
                     console.log(response);
                     if ((response.status = 200)) {
                         alert("your course is added");
@@ -59,8 +60,8 @@ const Addcourse = () => {
                 <input type="text" onChange={e => setname(e.target.value)} />
             </label>
             <label>
-                Course Code
-                <input type="text" onChange={e => setcode(e.target.value)} />
+                Course Description 
+                <input type="text" onChange={e => setDescription(e.target.value)} />
             </label>
             <label>
                 Course Credit

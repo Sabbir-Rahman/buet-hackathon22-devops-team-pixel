@@ -14,7 +14,7 @@ const ViewCourse = () => {
         if (decodeduser != null) {
             const adminID = decodeduser.id; // SUBJECT TO CHANGE
             try {
-                const response = await axios.get('http://localhost:5010/api/v1/admin/course/view'); // SUBJECT TO CHANGE 
+                const response = await axios.get('http://68.183.191.149:5010/api/v1/admin/course/view'); // SUBJECT TO CHANGE 
                 console.log(response);
                 if ((response.status = 200)) {
                     setCourses(response.data.data);
@@ -36,14 +36,14 @@ const ViewCourse = () => {
             <table>
                 <tr>
                     <th>Course Name</th>
-                    {/* <th>Course Code</th>
-                    <th>Course Credit</th> */}
+                     <th>Course description</th>
+                    {/* <th>Course Credit</th> */}
                 </tr>
                 {courses.map(course => (
                     <tr>
                         <td>{course.name}</td>
-                        {/* <td>{course.code}</td>
-                        <td>{course.credit}</td> */}
+                         <td>{course.description}</td>
+                        {/*<td>{course.credit}</td> */}
                     </tr>
                 ))}
             </table>
