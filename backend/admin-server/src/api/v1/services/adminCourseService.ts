@@ -1,5 +1,5 @@
 import CourseModel from '../models/course'
-import { logGeneralError } from '../../../../../auth-server/logger/customLogger'
+import { logGeneralError } from '../../../../logger/customLogger'
 import { CourseDoc } from '../interfaces/modelInterfaces/course.interface'
 
 const FILENAME = '/backend/src/api/vi/services/adminCourseServices.ts'
