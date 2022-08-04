@@ -1,2 +1,15 @@
-# 1-admin service course router test
-GET http://localhost:5010/api/v1/admin/course/test
+# 1-course service course router test
+GET http://localhost:5002/api/v1/course/test
+###
+# 2-course service enrolled course
+POST http://localhost:5002/api/v1/course/enroll
+Content-Type: application/json 
+
+{ 
+  "studentId": "13124325353",
+  "courseId": "242423535345"
+}
+###
+# 3-course service view all admins
+GET http://localhost:5002/api/v1/course/view/
+###
