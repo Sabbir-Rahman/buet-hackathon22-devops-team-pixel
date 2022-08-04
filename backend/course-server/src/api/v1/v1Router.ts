@@ -1,8 +1,8 @@
 /* eslint-disable @typescript-eslint/no-unsafe-argument */
 import { Router } from 'express'
-import { adminCourseRouter } from './routes'
+import { courseEnrollRouter } from './routes'
 const router = Router()
 
-router.use('/course', adminCourseRouter)
+router.use('/', courseEnrollRouter)
 
 export default router
