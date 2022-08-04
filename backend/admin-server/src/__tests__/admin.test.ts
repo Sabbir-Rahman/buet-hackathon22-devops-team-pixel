@@ -47,6 +47,7 @@ describe('Auth', () => {
       const response = await request(app).get('/api/v1/admin/course/view')
       expect(response.status).toBe(200)
       expect(response.body.data).toBeInstanceOf(Array)
+      
     }
     )
   })
