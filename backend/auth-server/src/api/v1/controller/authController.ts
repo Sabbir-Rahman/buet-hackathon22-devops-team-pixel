@@ -124,7 +124,7 @@ async function viewStudents(req: Request, res: Response): Promise<void> {
   if (students) {
     response.statusCode = 200
     response.isSuccess = true
-    response.message = 'Admin viewed succesfully'
+    response.message = 'Student viewed succesfully'
     response.data = students
   } else {
     logGeneralError(
