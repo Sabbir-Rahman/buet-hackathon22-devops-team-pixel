@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import LogIn from './auth/LogIn';
 import AdminLogIn from './auth/adminLogIn';
+import StudentSignUp from './auth/SignUp';
 import {BrowserRouter as Router, Route, Switch } from "react-router-dom";
 function App() {
   return (
@@ -14,6 +15,11 @@ function App() {
       <Switch>
         <Route exact path="/adminSignin">
           <AdminLogIn />
+        </Route>
+      </Switch>
+      <Switch>
+        <Route exact path="/studentSignUp">
+          <StudentSignUp />
         </Route>
       </Switch>
     </Router>
