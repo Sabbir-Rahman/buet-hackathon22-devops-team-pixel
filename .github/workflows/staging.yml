@@ -1,4 +1,4 @@
-name: Staging server cd
+name: Staging server
 
 on:
   push:
@@ -15,19 +15,13 @@ jobs:
       with:
           node-version: 16.x
     - run: |
-        cd backend/admin-server
-        sudo docker ps
-        1998
-        sudo docker rm admin-server -f
-        1998
-        sudo docker ps
-        1998
-        sudo docker rmi admin-server -f
-        1998
-        sudo docker build -t admin-server .
-        1998
-        sudo docker run -p 5010:5010 -d --name admin-server admin-server
-        1998
-        sudo docker ps
-        1998
+        su - sabbir
+        cd /var/www/result-system/_work/buet-hackathon22-devops-team-pixel/buet-hackathon22-devops-team-pixel/backend/admin-server
+        docker ps
+        docker rm admin-server -f
+        docker ps
+        docker rmi admin-server -f
+        docker build -t admin-server .
+        docker run -p 5010:5010 -d --name admin-server admin-server
+        docker ps
         pwd
