@@ -16,7 +16,7 @@ jobs:
           node-version: 16.x
     - run: |
         pwd
-        cd admin-server
+        cd backend/admin-server
         pwd
         npm i
         npm run build
