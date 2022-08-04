@@ -14,6 +14,17 @@ async function addCourse(name: string): Promise<CourseDoc | boolean> {
   }
 }
 
+async function viewCourses(): Promise<CourseDoc[] | boolean> {
+  try {
+    const courses = CourseModel.find()
+    return courses
+  } catch (error) {
+    logGeneralError('admin-service', FILENAME, 'viewCourses', String(error))
+    return false
+  }
+}
+
 export default {
-  addCourse
+  addCourse,
+  viewCourses
 }

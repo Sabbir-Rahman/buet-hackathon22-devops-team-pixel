@@ -40,8 +40,35 @@ async function addCourse(
   } else {
     logGeneralError(
       'admin-serive',
-      '/controller/subscription.controller',
-      'addSubscriptionPackage',
+      '/controller/adminCourseController.ts',
+      'addCourse',
+      'Something wrong happen'
+    )
+  }
+  res.status(response.statusCode).json(response)
+}
+
+async function viewCourses(req: Request, res: Response): Promise<void> {
+  const response = {
+    isSuccess: false,
+    statusCode: 400,
+    message: 'View courses failed',
+    developerMessage: '',
+    isReadOnly: false,
+    data: {},
+  }
+  const courses = await adminCourseService.viewCourses()
+
+  if (courses) {
+    response.statusCode = 200
+    response.isSuccess = true
+    response.message = 'Courses viwed succesfully'
+    response.data = courses
+  } else {
+    logGeneralError(
+      'admin-serive',
+      '/controller/adminCourseController.ts',
+      'view courses',
       'Something wrong happen'
     )
   }
@@ -50,5 +77,6 @@ async function addCourse(
 
 export default {
   test,
-  addCourse
+  addCourse,
+  viewCourses
 }
