@@ -15,14 +15,7 @@ jobs:
       with:
           node-version: 16.x
     - run: |
-        su - sabbir
+        cd backend/admin-server
+        sudo docker ps
         1998
-        cd /var/www/result-system/_work/buet-hackathon22-devops-team-pixel/buet-hackathon22-devops-team-pixel/backend/admin-server
-        docker ps
-        docker rm admin-server -f
-        docker ps
-        docker rmi admin-server -f
-        docker build -t admin-server .
-        docker run -p 5010:5010 -d --name admin-server admin-server
-        docker ps
         pwd
