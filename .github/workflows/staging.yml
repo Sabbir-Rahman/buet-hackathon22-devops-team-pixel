@@ -20,8 +20,8 @@ jobs:
         pm2 stop 0
         pwd
         npm i
-        npm run test
         npm run build
+        npm run test
         pm2 start 0
         pm2 status
         pm2 save
