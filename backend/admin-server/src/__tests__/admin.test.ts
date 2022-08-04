@@ -7,7 +7,7 @@ import createServer from '../api/v1/utils/server'
 
 const app = createServer()
 // testing the auth server
-describe('Auth', () => {
+describe('Admin Service', () => {
   beforeAll(async () => {
     const mongoServer = await MongoMemoryServer.create()
     await mongoose.connect(mongoServer.getUri())

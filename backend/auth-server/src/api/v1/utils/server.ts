@@ -10,7 +10,7 @@ function createServer() {
   app.get('/', (req, res) => {
     res.send('Welcome from auth-server ci-cd pipeline')
   })
-  app.use('/api/v1/admin', v1Router)
+  app.use('/api/v1/auth', v1Router)
 
   return app
 }
