@@ -15,18 +15,18 @@ jobs:
       - run: |
           pwd
           cd backend/admin-server
-          npm ci
+          npm i
           npm test
           npm run build
           cd ..
           cd auth-server
-          npm ci
+          npm i
           npm run build
           cd ..
           cd course-server
-          npm ci
+          npm i
           npm run build
           cd ..
           cd result-server
-          npm ci
+          npm i
           npm run build
