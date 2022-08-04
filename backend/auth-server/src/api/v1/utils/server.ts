@@ -8,7 +8,7 @@ function createServer() {
   app.use(cors())
   app.use(express.json())
   app.get('/', (req, res) => {
-    res.send('Welcome from admin-server ci-cd pipeline')
+    res.send('Welcome from auth-server ci-cd pipeline')
   })
   app.use('/api/v1/admin', v1Router)
 
