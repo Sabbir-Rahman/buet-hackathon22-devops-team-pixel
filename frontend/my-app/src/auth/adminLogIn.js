@@ -40,7 +40,7 @@ const AdminLogIn = () => {
       );
 
       console.log(data);
-      localStorage.setItem("usertoken", data.token);
+      localStorage.setItem("admintoken", data.token);
       setLoading(false);
       alert("Login Successful");
       window.location.href = "/";
