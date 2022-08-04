@@ -6,9 +6,9 @@ export const logGeneralInfo = (
   method: string,
   message: string
 ): void => {
-  // logger.info(
-  //   `service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`
-  //)
+  logger.info(
+    `service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`
+  )
   console.log(`service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`)
 }
 
@@ -18,8 +18,8 @@ export const logGeneralError = (
   method: string,
   message: string
 ): void => {
-  // logger.error(
-  //   `service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`
-  // )
-  console.log(`service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`)
+  logger.error(
+    `service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`
+  )
+  //console.log(`service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`)
 }
