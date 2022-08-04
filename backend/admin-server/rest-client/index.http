@@ -1,2 +1,14 @@
 # 1-admin service course router test
 GET http://localhost:5010/api/v1/admin/course/test
+###
+# 2-admin service add course
+POST http://localhost:5010/api/v1/admin/course/add
+Content-Type: application/json 
+
+{ 
+  "name": "course1"
+}
+###
+# 3-admin service view all courses
+GET http://localhost:5010/api/v1/admin/course/view
+###
