@@ -2,9 +2,11 @@
 import express, { Response } from 'express'
 import config from 'config'
 import cors from 'cors'
+import { logGeneralInfo } from '../logger/customLogger'
 
 const app = express()
 const port = config.get<number>('PORT') || 5010
+const FILENAME = '/backend/admin-server/src/app.ts'
 
 app.use(cors())
 app.use(express.json())
@@ -26,5 +28,5 @@ app.all('*', (_, res: Response) => {
 })
 
 app.listen(port, async () => {
-  console.log(`Server listening on port ${port}`)
+  logGeneralInfo('admin-server', FILENAME, 'app-listen', `Server listening on port ${port}`)
 })
