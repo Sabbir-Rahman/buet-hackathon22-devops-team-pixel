@@ -16,6 +16,7 @@ jobs:
           node-version: 16.x
     - run: |
         su - sabbir
+        1998
         cd /var/www/result-system/_work/buet-hackathon22-devops-team-pixel/buet-hackathon22-devops-team-pixel/backend/admin-server
         docker ps
         docker rm admin-server -f
