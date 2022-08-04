@@ -23,7 +23,7 @@ app.use(
 app.use('/api/v1/admin', v1Router)
 
 app.get('/', (req, res) => {
-  res.send('Welcome from admin-server')
+  res.send('Welcome from admin-server yes')
 })
 
 // catch all
