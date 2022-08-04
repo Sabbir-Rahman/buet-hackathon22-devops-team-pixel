@@ -10,12 +10,12 @@ async function test(
     message: 'Admin test route ok',
     developerMessage: '',
     isReadOnly: false,
-    data: {'message': 'Admin test route ok'}
+    data: { message: 'Admin test route ok' },
   }
 
   res.status(response.statusCode).json(response)
 }
 
 export default {
-  test
+  test,
 }

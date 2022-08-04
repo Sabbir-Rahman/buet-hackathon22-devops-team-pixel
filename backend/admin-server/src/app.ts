@@ -13,7 +13,7 @@ app.use(cors())
 app.use(express.json())
 app.use(
   express.urlencoded({
-    extended: true
+    extended: true,
   })
 )
 
@@ -31,5 +31,10 @@ app.all('*', (_, res: Response) => {
 })
 
 app.listen(port, async () => {
-  logGeneralInfo('admin-server', FILENAME, 'app-listen', `Server listening on port ${port}`)
+  logGeneralInfo(
+    'admin-server',
+    FILENAME,
+    'app-listen',
+    `Server listening on port ${port}`
+  )
 })
