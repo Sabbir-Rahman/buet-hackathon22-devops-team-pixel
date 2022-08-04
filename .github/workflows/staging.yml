@@ -2,7 +2,7 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ staging ]
+    branches: [ dev ]
     
 jobs:
   build:
@@ -20,6 +20,7 @@ jobs:
         pm2 stop 0
         pwd
         npm i
+        npm run test
         npm run build
         pm2 start 0
         pm2 status
