@@ -4,6 +4,7 @@ import config from 'config'
 import cors from 'cors'
 import { logGeneralInfo } from '../logger/customLogger'
 import { v1Router } from './api/v1'
+import connect from './api/v1/utils/mongodbConnect'
 
 const app = express()
 const port = config.get<number>('PORT') || 5010
@@ -37,4 +38,5 @@ app.listen(port, async () => {
     'app-listen',
     `Server listening on port ${port}`
   )
+  await connect()
 })
