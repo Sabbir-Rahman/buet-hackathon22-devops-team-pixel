@@ -1,4 +1,4 @@
-name: Node.js CI 
+name: Staging server cd
 
 on:
   push:
@@ -16,11 +16,11 @@ jobs:
           node-version: 16.x
     - run: |
         cd backend/admin-server
-        docker ps
+        sudo docker ps
         sudo docker rm admin-server -f
-        docker ps
+        sudo docker ps
         sudo docker rmi admin-server -f
         sudo docker build -t admin-server .
         sudo docker run -p 5010:5010 -d --name admin-server admin-server
-        docker ps
+        sudo docker ps
         pwd
