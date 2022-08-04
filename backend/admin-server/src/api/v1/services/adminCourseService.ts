@@ -4,9 +4,9 @@ import { CourseDoc } from '../interfaces/modelInterfaces/course.interface'
 
 const FILENAME = '/backend/src/api/vi/services/adminCourseServices.ts'
 
-async function addCourse(name: string): Promise<CourseDoc | boolean> {
+async function addCourse(name: string, description: string): Promise<CourseDoc | boolean> {
   try {
-    const course = CourseModel.create({ name })
+    const course = CourseModel.create({ name, description })
     return course
   } catch (error) {
     logGeneralError('admin-service', FILENAME, 'addCourse', String(error))

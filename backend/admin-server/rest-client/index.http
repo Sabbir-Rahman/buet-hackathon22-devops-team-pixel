@@ -6,7 +6,8 @@ POST http://localhost:5010/api/v1/admin/course/add
 Content-Type: application/json 
 
 { 
-  "name": "course1"
+  "name": "course2",
+  "description": "This is a description"
 }
 ###
 # 3-admin service view all courses

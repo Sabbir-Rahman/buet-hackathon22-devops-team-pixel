@@ -7,7 +7,8 @@ import {
 
 const courseSchema = new Schema<Course>(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true, unique: true },
+    description: { type: String },
   },
   {
     timestamps: true,
