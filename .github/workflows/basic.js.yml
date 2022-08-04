@@ -20,4 +20,10 @@ jobs:
         pwd
         npm i
         npm run build
+        pm2 start npm --name "admin-server" -- run start
+        pm2 status
+        pm2 save
+        cd ..
+        pwd
+        pm2 status
         sudo service nginx restart
