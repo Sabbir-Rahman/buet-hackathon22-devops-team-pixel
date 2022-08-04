@@ -30,7 +30,7 @@ async function addCourse(
     isReadOnly: false,
     data: {},
   }
-  const course = await adminCourseService.addCourse(req.body.name)
+  const course = await adminCourseService.addCourse(req.body.name, req.body.description)
 
   if (course) {
     response.statusCode = 200
