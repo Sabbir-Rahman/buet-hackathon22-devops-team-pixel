@@ -25,6 +25,15 @@ jobs:
         pm2 status
         pm2 save
         cd ..
+        cd backend/auth-server
+        pwd
+        npm i
+        npm run build
+        pm2 start npm --name "auth-server" -- run start 
+        pm2 status
+        pm2 save
         pwd
         pm2 status
+        cd ..
+        pwd
         sudo service nginx restart
