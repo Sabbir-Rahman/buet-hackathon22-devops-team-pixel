@@ -3,6 +3,7 @@ import express, { Response } from 'express'
 import config from 'config'
 import cors from 'cors'
 import { logGeneralInfo } from '../logger/customLogger'
+import { v1Router } from './api/v1'
 
 const app = express()
 const port = config.get<number>('PORT') || 5010
@@ -15,6 +16,8 @@ app.use(
     extended: true
   })
 )
+
+app.use('/api/v1/admin', v1Router)
 
 app.get('/', (req, res) => {
   res.send('Welcome from admin-server')
