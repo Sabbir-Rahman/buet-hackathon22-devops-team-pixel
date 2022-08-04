@@ -1,0 +1,57 @@
+name: Node.js CI 
+
+on:
+  push:
+    branches: [ dev ]
+    
+jobs:
+  build:
+    runs-on: [ self-hosted, dev ]
+  
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+          node-version: 16.x
+    - run: |
+        pwd
+        cd backend/admin-server
+        pm2 stop 0
+        pwd
+        npm i
+        npm run build
+        pm2 start 0
+        pm2 status
+        pm2 save
+        cd ..
+        cd auth-server
+        pm2 stop 1
+        pwd
+        npm i
+        npm run build
+        pm2 start 1 
+        pm2 status
+        pm2 save
+        pwd
+        pm2 status
+        cd ..
+        cd course-server
+        pm2 stop 2
+        pwd
+        npm i
+        npm run build
+        pm2 start 2
+        pm2 status
+        pm2 save
+        cd ..
+        cd result-server
+        pm2 stop 3
+        pwd
+        npm i
+        npm run build
+        pm2 start 3
+        pm2 status
+        pm2 save
+        pwd
+        sudo service nginx restart
