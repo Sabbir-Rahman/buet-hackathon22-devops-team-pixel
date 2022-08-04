@@ -9,10 +9,8 @@ import "aos/dist/aos.css";
 import { useEffect } from "react";
 import { useState } from "react";
 import axios from "axios";
-import LoginButton from "../components/login";
-import LogoutButton from "../components/logout";
 
-const SignUp = () => {
+const StudentSignUp = () => {
   useEffect(() => {
     Aos.init({ duration: 1500 });
   }, []);
@@ -24,107 +22,64 @@ const SignUp = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState(null);
+  const [invitationOTP, setInvationOTP] = useState("");
 
-  // const submitHandler = async (e) => {
-  //   e.preventDefault();
-  //   if (password !== confirmPassword) setMessage("Passwords do not match");
-  //   else {
-  //     try {
-  //       const config = {
-  //         headers: {
-  //           "Content-type": "application/json",
-  //         },
-  //       };
 
-  //       setLoading(true);
-
-  //       const { data } = await axios.post(
-  //         "/api/users/registration",
-  //         {
-  //           name,
-  //           email,
-  //           password,
-  //         },
-  //         config
-  //       )
-  //       .then(res => {
-  //         console.log(res);
-  //       });
-
-  //       console.log(data);
-  //       localStorage.setItem("userInfo", JSON.stringify(data));
-  //       setLoading(false);
-  //       window.location.href = "/";
-  //     } catch (error) {
-  //       setError(error.response.data.message);
-  //     }
-  //   }
-  // };
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    console.log("lol" + name);
-    if (password == confirmPassword) {
-      const newUser = {
-        name,
-        email,
-        password,
-        phone
-      };
-      console.log(newUser);
+  const submitHandler = async (e) => {
+    e.preventDefault();
+    if (password !== confirmPassword) setMessage("Passwords do not match");
+    else {
       try {
-        const response = await axios.post("/api/users/registeruser", newUser);
-        console.log(response);
-        if (response.data.message == "email already exists") {
-          alert("email already exists");
-        }
-        else {
-          alert("registered successfully");
-          window.location.href = "/";
-          localStorage.clear();
-        }
-        // const response= fetch('/post/',{
-        //     method:'POST',
-        //     mode:'no-cors',
-        //     headers:{
-        //         'Content-Type':'application/json',
-        //         'Accept':'application/json'
-        //     },
-        //     body:JSON.stringify(newRestaurent)
-        //   })
-        //   .then(response => response.json())
-        //     .then(data => console.log(data));
+        const config = {
+          headers: {
+            "Content-type": "application/json",
+          },
+        };
+
+        setLoading(true);
+
+        const { data } = await axios.post(
+          "/api/users/registration",
+          {
+            name,
+            email,
+            password,
+            phone
+          },
+          config
+        )
+        .then(res => {
+          console.log(res);
+        });
+
+        console.log(data);
+        localStorage.setItem("adminInfo", JSON.stringify(data));
+        setLoading(false);
+        window.location.href = "/";
       } catch (error) {
-        console.log(error);
+        setError(error.response.data.message);
       }
-    } else {
-      alert("password not match");
     }
-    //console.log(newRestaurent);
   };
 
   return (
     <div className="background">
       {/* <Navbar2 /> */}
-      <img className="bg" src={img3} />
+      { /*<img className="bg" src={img3} />*/ }
       <a href="/" className="navlogo">
         <div data-aos="fade-right" className="fade">
-          <img className="dinologo" src={dinoLogo} />
+        { /*<img className="bg" src={img3} />*/ }
         </div>
       </a>
-
-      <div className="links2">
-        <a href="/UserSignUp">Sign Up</a>
-        <a href="/UserSignIn">Sign In</a>
-        <a href="/Profile">Profile</a>
-      </div>
 
       <div className="profile">
         <div data-aos="zoom-in-up" className="fade">
           <div className="justify-content-md-center">
-            <Form onSubmit={handleSubmit}>
+            <h3> Aloha Admin </h3>
+            <Form onSubmit={submitHandler}>
               <div data-aos="fade-up" className="fade">
                 <div className="text-center">
-                  <img className="user" src={userIcon} />
+                { /*<img className="bg" src={img3} />*/ }
                 </div>
                 <Form.Group className="mb-3">
                   <Form.Control
@@ -169,16 +124,6 @@ const SignUp = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Group>
-                <Form.Group className="mb-3" controlId="formBasicPassword">
-                  <Form.Control
-                    type="password"
-                    placeholder="Repeat Password"
-                    name="rpass"
-                    id="rpass"
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                  />
-                </Form.Group>
                 <div className="mb-3">
                   <a href="#">
                     <p className="hudai">Forgot password?</p>
@@ -187,7 +132,6 @@ const SignUp = () => {
                 <Button variant="primary" type="submit">
                   Submit
                 </Button>
-                <p className="emnei">Or sign in using</p>
                 {/* <i class="bi bi-facebook"></i> */}
                 <div className="other">
                   {/* <a id="other" href="http://localhost:3000/auth/facebook">
@@ -214,7 +158,6 @@ const SignUp = () => {
                     >
                       <path d="M15.545 6.558a9.42 9.42 0 0 1 .139 1.626c0 2.434-.87 4.492-2.384 5.885h.002C11.978 15.292 10.158 16 8 16A8 8 0 1 1 8 0a7.689 7.689 0 0 1 5.352 2.082l-2.284 2.284A4.347 4.347 0 0 0 8 3.166c-2.087 0-3.86 1.408-4.492 3.304a4.792 4.792 0 0 0 0 3.063h.003c.635 1.893 2.405 3.301 4.492 3.301 1.078 0 2.004-.276 2.722-.764h-.003a3.702 3.702 0 0 0 1.599-2.431H8v-3.08h7.545z" />
                     </svg> */}
-                    <LoginButton />
                   </a>
                   {/* <a href="">
                     <svg
@@ -238,6 +181,9 @@ const SignUp = () => {
                 </div> */}
               </div>
             </Form>
+            <a href="/adminPanel">
+                    <p className="hudai">Go to your Panel</p>
+                  </a>
           </div>
         </div>
       </div>
@@ -263,4 +209,4 @@ const SignUp = () => {
   );
 };
 
-export default SignUp;
+export default StudentSignUp;
