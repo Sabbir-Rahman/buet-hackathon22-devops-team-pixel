@@ -16,5 +16,5 @@ jobs:
           node-version: 16.x
     - run: |
         cd backend/admin-server
-        sudo docker ps
+        docker ps
         pwd
