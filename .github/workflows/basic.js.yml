@@ -25,7 +25,7 @@ jobs:
         pm2 status
         pm2 save
         cd ..
-        cd backend/auth-server
+        cd auth-server
         pwd
         npm i
         npm run build
