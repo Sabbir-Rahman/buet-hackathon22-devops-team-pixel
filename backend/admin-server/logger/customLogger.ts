@@ -9,6 +9,7 @@ export const logGeneralInfo = (
   logger.info(
     `service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`
   )
+  console.log(`service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`)
 }
 
 export const logGeneralError = (
@@ -20,4 +21,5 @@ export const logGeneralError = (
   logger.error(
     `service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`
   )
+  //console.log(`service: ${serviceName} | file: ${file} | method: ${method} | message: ${message}`)
 }
