@@ -1,0 +1,2 @@
+# 1-admin service course router test
+GET http://localhost:5010/api/v1/admin/course/test
