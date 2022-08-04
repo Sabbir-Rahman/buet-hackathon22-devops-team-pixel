@@ -17,36 +17,40 @@ jobs:
     - run: |
         pwd
         cd backend/admin-server
+        pm2 stop 0
         pwd
         npm i
         npm run build
-        pm2 start npm --name "admin-server" -- run start
+        pm2 start 0
         pm2 status
         pm2 save
         cd ..
         cd auth-server
+        pm2 stop 1
         pwd
         npm i
         npm run build
-        pm2 start npm --name "auth-server" -- run start 
+        pm2 start 1 
         pm2 status
         pm2 save
         pwd
         pm2 status
         cd ..
         cd course-server
+        pm2 stop 2
         pwd
         npm i
         npm run build
-        pm2 start npm --name "course-server" -- run start
+        pm2 start 2
         pm2 status
         pm2 save
         cd ..
         cd result-server
+        pm2 stop 3
         pwd
         npm i
         npm run build
-        pm2 start npm --name "result-server" -- run start
+        pm2 start 3
         pm2 status
         pm2 save
         pwd
