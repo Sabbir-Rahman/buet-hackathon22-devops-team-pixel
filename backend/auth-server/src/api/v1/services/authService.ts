@@ -1,6 +1,7 @@
-import AdminModel from '../models/course'
+import AdminModel from '../models/admin'
 import { logGeneralError } from '../../../../logger/customLogger'
-import { AdminDoc } from '../interfaces/modelInterfaces/auth.interface'
+import { AdminDoc, StudentDoc } from '../interfaces/modelInterfaces/auth.interface'
+import StudentModel from '../models/student'
 
 const FILENAME = '/backend/src/api/vi/services/authServices.ts'
 
@@ -26,7 +27,29 @@ async function viewAdmins(): Promise<AdminDoc[] | boolean> {
   }
 }
 
+async function addStudent(name: string,gender: string, year: number): Promise<StudentDoc | boolean> {
+  try {
+    const student = StudentModel.create({ name, gender, year })
+    return student
+  } catch (error) {
+    logGeneralError('auth-service', FILENAME, 'addStudent', String(error))
+    return false
+  }
+}
+
+async function viewStudents(): Promise<StudentDoc[] | boolean> {
+  try {
+    const students = StudentModel.find()
+    return students
+  } catch (error) {
+    logGeneralError('auth-service', FILENAME, 'viewStudents', String(error))
+    return false
+  }
+}
+
 export default {
   addAdmin,
   viewAdmins,
+  addStudent,
+  viewStudents
 }
