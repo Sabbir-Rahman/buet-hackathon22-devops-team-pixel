@@ -1,6 +1,6 @@
 import { Schema, model, Model } from 'mongoose'
 
-import { CourseEnrollDoc, Result } from '../interfaces/modelInterfaces/resultInterface'
+import { ResultDoc, Result } from '../interfaces/modelInterfaces/resultInterface'
 
 const resultSchema = new Schema<Result>(
   {

@@ -6,4 +6,4 @@ export interface Result {
   year: number,
 }
 
-export type CourseEnrollDoc = Result & CorrectedDocument
+export type ResultDoc = Result & CorrectedDocument

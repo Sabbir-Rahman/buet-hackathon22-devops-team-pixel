@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { logGeneralError } from '../../../../logger/customLogger'
+import { logGeneralInfo } from '../../../../logger/customLogger'
 import { resultService } from '../services'
 async function test(
   req: Request<never, never, never>,
@@ -20,7 +20,7 @@ async function test(
 async function addResult(req: Request, res: Response): Promise<void> {
   const response = {
     isSuccess: false,
-    statusCode: 200,
+    statusCode: 400,
     message: 'Result not added',
     developerMessage: '',
     isReadOnly: false,
@@ -35,7 +35,7 @@ async function addResult(req: Request, res: Response): Promise<void> {
     response.message = 'Result added succesfully'
     response.data = result
   } else {
-    logGeneralError(
+    logGeneralInfo(
       'admin-serive',
       '/controller/authController.ts',
       'addResult',
@@ -48,7 +48,7 @@ async function addResult(req: Request, res: Response): Promise<void> {
 async function viewResult(req: Request, res: Response): Promise<void> {
   const response = {
     isSuccess: false,
-    statusCode: 200,
+    statusCode: 400,
     message: 'Results not viewed',
     developerMessage: '',
     isReadOnly: false,
@@ -63,7 +63,7 @@ async function viewResult(req: Request, res: Response): Promise<void> {
     response.message = 'Results viewed succesfully'
     response.data = results
   } else {
-    logGeneralError(
+    logGeneralInfo(
       'admin-serive',
       '/controller/authController.ts',
       'viewResult',
