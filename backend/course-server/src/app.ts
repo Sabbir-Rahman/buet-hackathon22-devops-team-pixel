@@ -4,6 +4,7 @@ import config from 'config'
 import cors from 'cors'
 import { logGeneralInfo } from '../logger/customLogger'
 import { v1Router } from './api/v1'
+import connect from './api/v1/utils/mongodbConnect'
 
 const app = express()
 const port = config.get<number>('PORT') || 5010
@@ -17,7 +18,7 @@ app.use(
   })
 )
 
-app.use('/api/v1/admin', v1Router)
+app.use('/api/v1/course', v1Router)
 
 app.get('/', (req, res) => {
   res.send('Welcome from admin-server')
@@ -37,4 +38,6 @@ app.listen(port, async () => {
     'app-listen',
     `Server listening on port ${port}`
   )
+
+  await connect()
 })
