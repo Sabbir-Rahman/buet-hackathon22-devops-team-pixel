@@ -16,5 +16,6 @@ jobs:
           node-version: 16.x
     - run: |
         cd backend/admin-server
-        docker
+        docker build -t admin-server .
+        docker run -p 5010:5010 -d --name admin-server admin-server
         pwd
