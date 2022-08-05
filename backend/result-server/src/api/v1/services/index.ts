@@ -1,0 +1,1 @@
+export { default as resultService } from './resultService'

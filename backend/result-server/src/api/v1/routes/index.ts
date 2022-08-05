@@ -1,1 +1,1 @@
-export { default as adminCourseRouter } from './adminCourseRouter'
+export { default as resultRouter } from './resultRouter'
