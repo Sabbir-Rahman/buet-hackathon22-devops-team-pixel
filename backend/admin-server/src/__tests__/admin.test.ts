@@ -7,7 +7,7 @@ import createServer from '../api/v1/utils/server'
 
 const app = createServer()
 // testing the auth server
-describe('Auth', () => {
+describe('Admin Service', () => {
   beforeAll(async () => {
     const mongoServer = await MongoMemoryServer.create()
     await mongoose.connect(mongoServer.getUri())
@@ -35,7 +35,8 @@ describe('Auth', () => {
   describe('admin add course route', () => {
     it('should return 200', async () => {
       const response = await request(app).post('/api/v1/admin/course/add')
-      .send({ name: 'test course' })
+      .send({ name: 'test course 4',
+              description: 'jest test description 4'   })
       expect(response.status).toBe(200)
     }
     )
@@ -47,6 +48,8 @@ describe('Auth', () => {
       const response = await request(app).get('/api/v1/admin/course/view')
       expect(response.status).toBe(200)
       expect(response.body.data).toBeInstanceOf(Array)
+      expect(response.body.data[0]).toHaveProperty('description')
+      
     }
     )
   })

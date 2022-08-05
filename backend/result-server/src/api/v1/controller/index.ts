@@ -1,1 +1,1 @@
-export { default as adminCourseController } from './adminCourseController'
+export { default as resultController } from './resultController'
