@@ -1,0 +1,40 @@
+version: "3"
+
+services:
+
+  # Proxies requests to internal service
+  admin-server:
+    image: admin-server
+    container_name: admin-server
+    build:
+      context: ./admin-server
+    ports:
+      - 5010:5010
+    restart: on-failure
+  
+  auth-server:
+    image: auth-server
+    container_name: auth-server
+    build:
+      context: ./auth-server
+    ports:
+      - 5001:5001
+    restart: on-failure
+  
+  course-server:
+    image: course-server
+    container_name: course-server
+    build:
+      context: ./course-server
+    ports:
+      - 5002:5002
+    restart: on-failure
+  
+  result-server:
+    image: result-server
+    container_name: result-server
+    build:
+      context: ./result-server
+    ports:
+      - 5003:5003
+    restart: on-failure
