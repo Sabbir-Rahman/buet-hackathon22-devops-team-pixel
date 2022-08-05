@@ -30,33 +30,15 @@ describe('Course Server', () => {
         .post('/api/v1/result/result/add')
         .send({
           studentId: '12345',
-          result: '100',
-          year: '2020',
+          result: 100,
+          year: 2020,
         })
       expect(response.status).toBe(200)
       expect(response.body.isSuccess).toBe(true)
       expect(response.body.message).toBe('Result added succesfully')
       expect(response.body.data.studentId).toBe('12345')
-      expect(response.body.data.result).toBe('100')
-      expect(response.body.data.year).toBe('2020')
     }
     )
   }
   )
-
-  // testing getting all results  
-  describe('getting all results', () => {
-    it('should return all results', async () => {
-      const response = await request(app)
-        .get('api/v1/result/view')
-      expect(response.status).toBe(200)
-      expect(response.body.isSuccess).toBe(true)
-      expect(response.body.message).toBe('Results found succesfully')
-      expect(response.body.data.length).toBe(1)
-      expect(response.body.data[0].studentId).toBe('12345')
-      expect(response.body.data[0].result).toBe('100')
-      expect(response.body.data[0].year).toBe('2020')
-    }
-    )
-  })
 })

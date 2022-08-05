@@ -27,7 +27,7 @@ async function addResult(req: Request, res: Response): Promise<void> {
     data: {},
   }
 
-  const result = await resultService.addResult(req.body.studentId, req.body.courseId, req.body.result)
+  const result = await resultService.addResult(req.body.studentId, req.body.result, req.body.year)
 
   if (result) {
     response.statusCode = 200
